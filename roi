@@ -1,0 +1,16 @@
+#ifndef ROI_H
+#define ROI_H
+#include<opencv2\core\core.hpp>
+#include<opencv2\highgui\highgui.hpp>
+#include<vector>
+using namespace cv;
+using namespace std;
+//判断两条线段相交
+bool intersection(const vector<Point> & line1, const vector<Point> &line2);//vector<Point> line(2),代表一线段
+
+//判断矩形和一条线段相交(线段只要与矩形的一条边相交，就可以判定相交 或者 线段在矩形内部)
+bool rect_line_intersection(const vector<Point> & line,const Rect & targetRect);//rect的四个顶点(roi.x,roi.y),(roi.x,roi.y+roi.height-1),(roi.x+roi.width-1,roi.y),(roi.x+roi.width-1,roi.y+roi.height-1)
+
+//以Rect的中心点为基础，同比例缩放Rect
+Rect scaleRect(const Rect &_rect,float scale);
+#endif
